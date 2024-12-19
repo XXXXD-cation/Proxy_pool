@@ -14,10 +14,10 @@ logger = logging.getLogger('ProxyStorage')
 class ProxyStorage:
     def __init__(self):
         self.redis = redis.Redis(
-            host='192.168.253.134',
+            host='localhost',
             port=6379,
             db=0,
-            password='2wsxVFR_'
+            password='*********'
         )
         self.proxy_key = 'proxies'
         self.min_score = 0
