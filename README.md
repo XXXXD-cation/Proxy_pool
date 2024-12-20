@@ -47,4 +47,45 @@ curl http:///localhost:5000/feedback/<ip>/<port>/<status> # 反馈代理可用�
 
 ```
 
+仅供参考
+```
+# 后台运行代理获取器
+sudo vim /etc/systemd/system/proxy_pool.service
+
+
+[Unit]
+
+Description=Proxy Pool Service
+
+After=network.target
+
+
+
+[Service]
+
+Type=simple
+
+WorkingDirectory=/root/Proxy_pool
+
+ExecStart=/bin/bash -c 'source .venv/bin/activate && python src/scheduler.py'
+
+Environment=PYTHONUNBUFFERED=1
+
+Restart=always
+
+User=root
+
+Group=root
+
+
+
+[Install]
+
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl start proxy_pool.service
+sudo systemctl status proxy_pool.service
+sudo systemctl enable proxy_pool.service
+```
 
