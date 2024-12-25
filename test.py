@@ -36,6 +36,8 @@ def test_proxy(proxy: str, dest_url: str):
 def main():
     api_url = 'http://localhost:5000/get_proxy'
     dest_url = 'https://gitee.com'
+    username = 'admin'
+    password = 'admin123'
 
     # 获取代理
     proxy_data = get_proxy(api_url)
